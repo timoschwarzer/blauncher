@@ -1,0 +1,1855 @@
+﻿<Window x:Name="SettingsWindowX" x:Class="SettingsWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="Settings" Height="509.667" Width="414" Icon="blender-logo.ico" AllowsTransparency="True" WindowStyle="None" Background="{x:Null}" WindowStartupLocation="CenterScreen">
+    <Window.Effect>
+        <DropShadowEffect BlurRadius="30" ShadowDepth="0" Opacity="0.7"/>
+    </Window.Effect>
+    <Grid x:Name="MainGrid" Margin="30" Background="White">
+        <GroupBox Header="Download Channel" HorizontalAlignment="Left" Margin="10,52,0,0" VerticalAlignment="Top" Height="104" Width="333">
+            <Grid>
+                <RadioButton x:Name="ReleaseChannelRadioButton" Content="Release" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="16" VerticalContentAlignment="Center"/>
+                <RadioButton x:Name="ExperimentalChannelRadioButton" Content="Experimental" HorizontalAlignment="Left" Margin="10,44,0,0" VerticalAlignment="Top" FontSize="16" VerticalContentAlignment="Center"/>
+                <Label Content="grabbed from blender.org/download" HorizontalAlignment="Left" Margin="29,27,0,0" VerticalAlignment="Top" FontSize="10" Height="16" Padding="0"/>
+                <Label Content="grabbed from the blender buildbot" HorizontalAlignment="Left" Margin="29,62,0,0" VerticalAlignment="Top" FontSize="10" Height="16" Padding="0"/>
+            </Grid>
+        </GroupBox>
+        <GroupBox Header="Download Options" HorizontalAlignment="Left" Margin="10,161,0,0" VerticalAlignment="Top" Height="54" Width="333">
+            <CheckBox x:Name="AutoUpdateCheckBox" Content="Automatically update Blender to the latest version" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+        </GroupBox>
+        <ProgressBar x:Name="MainProgressBar" HorizontalAlignment="Left" Height="18" Margin="10,0,0,10" VerticalAlignment="Bottom" Width="234" Foreground="#FF004591"/>
+        <Button x:Name="UpdateNowButton" Content="Download latest version now" HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Bottom" Width="234" Background="White" BorderThickness="2,0,0,0" Padding="5,1,1,1" HorizontalContentAlignment="Left" IsEnabled="False"/>
+        <GroupBox Header="Versions" HorizontalAlignment="Left" Margin="10,220,0,0" VerticalAlignment="Top" Height="104" Width="333">
+            <Grid>
+                <Label Content="Release:&#xA;Experimental:&#xD;&#xA;Installed:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+                <Label x:Name="LatestVersionsLabel" Content="Searching...&#xD;&#xA;Searching...&#xD;&#xA;Searching..." Margin="96,11,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="215"/>
+            </Grid>
+        </GroupBox>
+        <Button x:Name="DeleteOldVersions" Content="Delete unused Blender versions" HorizontalAlignment="Left" Margin="10,0,0,50" VerticalAlignment="Bottom" Width="234" Background="White" BorderThickness="2,0,0,0" Padding="5,1,1,1" HorizontalContentAlignment="Left"/>
+        <Button x:Name="CreateBlenderShortcut" Content="Create 'Launch Blender' shortcut" HorizontalAlignment="Left" Margin="10,0,0,70" VerticalAlignment="Bottom" Width="234" Background="White" BorderThickness="2,0,0,0" Padding="5,1,1,1" HorizontalContentAlignment="Left"/>
+        <Button x:Name="CreateBlenderShortcut_Copy" Content="Create 'bLauncher Settings' shortcut" HorizontalAlignment="Left" Margin="10,0,0,90" VerticalAlignment="Bottom" Width="234" Background="White" BorderThickness="2,0,0,0" HorizontalContentAlignment="Left" Padding="5,1,1,1"/>
+        <Grid x:Name="ChromeGrid" HorizontalAlignment="Left" Height="28" Margin="2,2,0,0" VerticalAlignment="Top" Width="314" Background="White">
+            <Image x:Name="ChromeBar" HorizontalAlignment="Left" Height="28" VerticalAlignment="Top" Width="31" Source="blender-logo.ico"/>
+            <Button x:Name="LaunchBlenderButton" Content="Launch Blender" HorizontalAlignment="Left" Margin="36,0,0,0" VerticalAlignment="Top" Width="101" Height="28" Background="White" BorderBrush="White"/>
+        </Grid>
+        <Label x:Name="CancelLabel" Content="r" HorizontalAlignment="Right" VerticalAlignment="Top" Foreground="#FF004591" Cursor="Hand" FontFamily="Marlett" FontSize="18" Width="46" HorizontalContentAlignment="Center" RenderTransformOrigin="0.501,0.5"/>
+        <RichTextBox HorizontalAlignment="Left" Height="230" Margin="398,56,0,0" VerticalAlignment="Top" Width="416" FontSize="10">
+            <FlowDocument>
+                <Paragraph FontWeight="Bold" FontSize="14.6666666666667" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="bLaucher – http://setagon.com/blauncher"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="© Timo Schwarzer – 2015"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Run Language="de-de"/>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Run Language="de-de" Text="GNU GENERAL PUBLIC LICENSE"/>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Run Language="de-de" Text="Version 2, June 1991"/>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text=" Copyright (C) 1989, 1991 Free Software Foundation, Inc., &lt;http://fsf.org/&gt;"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text=" 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text=" Everyone is permitted to copy and distribute verbatim copies"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text=" of this license document, but changing it is not allowed."/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="                            Preamble"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="  The licenses for most software are designed to take away your"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="freedom to share and change it.  By contrast, the GNU General Public"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="License is intended to guarantee your freedom to share and change free"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="software--to make sure the software is free for all its users.  This"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="General Public License applies to most of the Free Software"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="Foundation's software and to any other program whose authors commit to"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="using it.  (Some other Free Software Foundation software is covered by"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="the GNU Lesser General Public License instead.)  You can apply it to"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="your programs, too."/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="  When we speak of free software, we are referring to freedom, not"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="price.  Our General Public Licenses are designed to make sure that you"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="have the freedom to distribute copies of free software (and charge for"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="this service if you wish), that you receive source code or can get it"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="if you want it, that you can change the software or use pieces of it"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="in new free programs; and that you know you can do these things."/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="  To protect your rights, we need to make restrictions that forbid"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="anyone to deny you these rights or to ask you to surrender the rights."/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="These restrictions translate to certain responsibilities for you if you"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="distribute copies of the software, or if you modify it."/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="  For example, if you distribute copies of such a program, whether"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="gratis or for a fee, you must give the recipients all the rights that"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="you have.  You must make sure that they, too, receive or can get the"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="source code.  And you must show them these terms so they know their"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="rights."/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="  We protect your rights with two steps: (1) copyright the software, and"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="(2) offer you this license which gives you legal permission to copy,"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="distribute and/or modify the software."/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="  Also, for each author's protection and ours, we want to make certain"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="that everyone understands that there is no warranty for this free"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="software.  If the software is modified by someone else and passed on, we"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="want its recipients to know that what they have is not the original, so"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="that any problems introduced by others will not reflect on the original"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="authors' reputations."/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="  Finally, any free program is threatened constantly by software"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="patents.  We wish to avoid the danger that redistributors of a free"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="program will individually obtain patent licenses, in effect making the"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="program proprietary.  To prevent this, we have made it clear that any"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="patent must be licensed for everyone's free use or not licensed at all."/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="  The precise terms and conditions for copying, distribution and"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="modification follow."/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="                    GNU GENERAL PUBLIC LICENSE"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="   TERMS AND CONDITIONS FOR COPYING, DISTRIBUTION AND MODIFICATION"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="  0. This License applies to any program or other work which contains"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="a notice placed by the copyright holder saying it may be distributed"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="under the terms of this General Public License.  The &quot;Program&quot;, below,"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="refers to any such program or work, and a &quot;work based on the Program&quot;"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="means either the Program or any derivative work under copyright law:"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="that is to say, a work containing the Program or a portion of it,"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="either verbatim or with modifications and/or translated into another"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="language.  (Hereinafter, translation is included without limitation in"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="the term &quot;modification&quot;.)  Each licensee is addressed as &quot;you&quot;."/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="Activities other than copying, distribution and modification are not"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="covered by this License; they are outside its scope.  The act of"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="running the Program is not restricted, and the output from the Program"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="is covered only if its contents constitute a work based on the"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="Program (independent of having been made by running the Program)."/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="Whether that is true depends on what the Program does."/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="  1. You may copy and distribute verbatim copies of the Program's"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="source code as you receive it, in any medium, provided that you"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="conspicuously and appropriately publish on each copy an appropriate"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="copyright notice and disclaimer of warranty; keep intact all the"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="notices that refer to this License and to the absence of any warranty;"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="and give any other recipients of the Program a copy of this License"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="along with the Program."/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="You may charge a fee for the physical act of transferring a copy, and"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="you may at your option offer warranty protection in exchange for a fee."/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="  2. You may modify your copy or copies of the Program or any portion"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="of it, thus forming a work based on the Program, and copy and"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="distribute such modifications or work under the terms of Section 1"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="above, provided that you also meet all of these conditions:"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="    a) You must cause the modified files to carry prominent notices"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="    stating that you changed the files and the date of any change."/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="    b) You must cause any work that you distribute or publish, that in"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="    whole or in part contains or is derived from the Program or any"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="    part thereof, to be licensed as a whole at no charge to all third"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="    parties under the terms of this License."/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="    c) If the modified program normally reads commands interactively"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="    when run, you must cause it, when started running for such"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="    interactive use in the most ordinary way, to print or display an"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="    announcement including an appropriate copyright notice and a"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="    notice that there is no warranty (or else, saying that you provide"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="    a warranty) and that users may redistribute the program under"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="    these conditions, and telling the user how to view a copy of this"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="    License.  (Exception: if the Program itself is interactive but"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="    does not normally print such an announcement, your work based on"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="    the Program is not required to print an announcement.)"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="These requirements apply to the modified work as a whole.  If"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="identifiable sections of that work are not derived from the Program,"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="and can be reasonably considered independent and separate works in"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="themselves, then this License, and its terms, do not apply to those"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="sections when you distribute them as separate works.  But when you"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="distribute the same sections as part of a whole which is a work based"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="on the Program, the distribution of the whole must be on the terms of"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="this License, whose permissions for other licensees extend to the"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="entire whole, and thus to each and every part regardless of who wrote it."/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="Thus, it is not the intent of this section to claim rights or contest"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="your rights to work written entirely by you; rather, the intent is to"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="exercise the right to control the distribution of derivative or"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="collective works based on the Program."/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="In addition, mere aggregation of another work not based on the Program"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="with the Program (or with a work based on the Program) on a volume of"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="a storage or distribution medium does not bring the other work under"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="the scope of this License."/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="  3. You may copy and distribute the Program (or a work based on it,"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="under Section 2) in object code or executable form under the terms of"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="Sections 1 and 2 above provided that you also do one of the following:"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="    a) Accompany it with the complete corresponding machine-readable"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="    source code, which must be distributed under the terms of Sections"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="    1 and 2 above on a medium customarily used for software interchange; or,"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="    b) Accompany it with a written offer, valid for at least three"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="    years, to give any third party, for a charge no more than your"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="    cost of physically performing source distribution, a complete"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="    machine-readable copy of the corresponding source code, to be"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="    distributed under the terms of Sections 1 and 2 above on a medium"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="    customarily used for software interchange; or,"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="    c) Accompany it with the information you received as to the offer"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="    to distribute corresponding source code.  (This alternative is"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="    allowed only for noncommercial distribution and only if you"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="    received the program in object code or executable form with such"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="    an offer, in accord with Subsection b above.)"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="The source code for a work means the preferred form of the work for"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="making modifications to it.  For an executable work, complete source"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="code means all the source code for all modules it contains, plus any"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="associated interface definition files, plus the scripts used to"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="control compilation and installation of the executable.  However, as a"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="special exception, the source code distributed need not include"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="anything that is normally distributed (in either source or binary"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="form) with the major components (compiler, kernel, and so on) of the"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="operating system on which the executable runs, unless that component"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="itself accompanies the executable."/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="If distribution of executable or object code is made by offering"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="access to copy from a designated place, then offering equivalent"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="access to copy the source code from the same place counts as"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="distribution of the source code, even though third parties are not"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="compelled to copy the source along with the object code."/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="  4. You may not copy, modify, sublicense, or distribute the Program"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="except as expressly provided under this License.  Any attempt"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="otherwise to copy, modify, sublicense or distribute the Program is"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="void, and will automatically terminate your rights under this License."/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="However, parties who have received copies, or rights, from you under"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="this License will not have their licenses terminated so long as such"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="parties remain in full compliance."/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="  5. You are not required to accept this License, since you have not"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="signed it.  However, nothing else grants you permission to modify or"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="distribute the Program or its derivative works.  These actions are"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="prohibited by law if you do not accept this License.  Therefore, by"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="modifying or distributing the Program (or any work based on the"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="Program), you indicate your acceptance of this License to do so, and"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="all its terms and conditions for copying, distributing or modifying"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="the Program or works based on it."/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="  6. Each time you redistribute the Program (or any work based on the"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="Program), the recipient automatically receives a license from the"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="original licensor to copy, distribute or modify the Program subject to"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="these terms and conditions.  You may not impose any further"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="restrictions on the recipients' exercise of the rights granted herein."/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="You are not responsible for enforcing compliance by third parties to"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="this License."/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="  7. If, as a consequence of a court judgment or allegation of patent"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="infringement or for any other reason (not limited to patent issues),"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="conditions are imposed on you (whether by court order, agreement or"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="otherwise) that contradict the conditions of this License, they do not"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="excuse you from the conditions of this License.  If you cannot"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="distribute so as to satisfy simultaneously your obligations under this"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="License and any other pertinent obligations, then as a consequence you"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="may not distribute the Program at all.  For example, if a patent"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="license would not permit royalty-free redistribution of the Program by"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="all those who receive copies directly or indirectly through you, then"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="the only way you could satisfy both it and this License would be to"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="refrain entirely from distribution of the Program."/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="If any portion of this section is held invalid or unenforceable under"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="any particular circumstance, the balance of the section is intended to"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="apply and the section as a whole is intended to apply in other"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="circumstances."/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="It is not the purpose of this section to induce you to infringe any"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="patents or other property right claims or to contest validity of any"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="such claims; this section has the sole purpose of protecting the"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="integrity of the free software distribution system, which is"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="implemented by public license practices.  Many people have made"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="generous contributions to the wide range of software distributed"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="through that system in reliance on consistent application of that"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="system; it is up to the author/donor to decide if he or she is willing"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="to distribute software through any other system and a licensee cannot"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="impose that choice."/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="This section is intended to make thoroughly clear what is believed to"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="be a consequence of the rest of this License."/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="  8. If the distribution and/or use of the Program is restricted in"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="certain countries either by patents or by copyrighted interfaces, the"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="original copyright holder who places the Program under this License"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="may add an explicit geographical distribution limitation excluding"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="those countries, so that distribution is permitted only in or among"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="countries not thus excluded.  In such case, this License incorporates"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="the limitation as if written in the body of this License."/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="  9. The Free Software Foundation may publish revised and/or new versions"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="of the General Public License from time to time.  Such new versions will"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="be similar in spirit to the present version, but may differ in detail to"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="address new problems or concerns."/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="Each version is given a distinguishing version number.  If the Program"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="specifies a version number of this License which applies to it and &quot;any"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="later version&quot;, you have the option of following the terms and conditions"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="either of that version or of any later version published by the Free"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="Software Foundation.  If the Program does not specify a version number of"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="this License, you may choose any version ever published by the Free Software"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="Foundation."/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="  10. If you wish to incorporate parts of the Program into other free"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="programs whose distribution conditions are different, write to the author"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="to ask for permission.  For software which is copyrighted by the Free"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="Software Foundation, write to the Free Software Foundation; we sometimes"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="make exceptions for this.  Our decision will be guided by the two goals"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="of preserving the free status of all derivatives of our free software and"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="of promoting the sharing and reuse of software generally."/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="                            NO WARRANTY"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="  11. BECAUSE THE PROGRAM IS LICENSED FREE OF CHARGE, THERE IS NO WARRANTY"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="FOR THE PROGRAM, TO THE EXTENT PERMITTED BY APPLICABLE LAW.  EXCEPT WHEN"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="OTHERWISE STATED IN WRITING THE COPYRIGHT HOLDERS AND/OR OTHER PARTIES"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="PROVIDE THE PROGRAM &quot;AS IS&quot; WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.  THE ENTIRE RISK AS"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="TO THE QUALITY AND PERFORMANCE OF THE PROGRAM IS WITH YOU.  SHOULD THE"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="PROGRAM PROVE DEFECTIVE, YOU ASSUME THE COST OF ALL NECESSARY SERVICING,"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="REPAIR OR CORRECTION."/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="  12. IN NO EVENT UNLESS REQUIRED BY APPLICABLE LAW OR AGREED TO IN WRITING"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="WILL ANY COPYRIGHT HOLDER, OR ANY OTHER PARTY WHO MAY MODIFY AND/OR"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="REDISTRIBUTE THE PROGRAM AS PERMITTED ABOVE, BE LIABLE TO YOU FOR DAMAGES,"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="INCLUDING ANY GENERAL, SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES ARISING"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="OUT OF THE USE OR INABILITY TO USE THE PROGRAM (INCLUDING BUT NOT LIMITED"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="TO LOSS OF DATA OR DATA BEING RENDERED INACCURATE OR LOSSES SUSTAINED BY"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="YOU OR THIRD PARTIES OR A FAILURE OF THE PROGRAM TO OPERATE WITH ANY OTHER"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="PROGRAMS), EVEN IF SUCH HOLDER OR OTHER PARTY HAS BEEN ADVISED OF THE"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="POSSIBILITY OF SUCH DAMAGES."/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="                     END OF TERMS AND CONDITIONS"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="14.6666666666667" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left"/>
+                <Paragraph FontWeight="Bold" FontSize="14.6666666666667" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left"/>
+                <Paragraph FontWeight="Bold" FontSize="14.6666666666667" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="en-gb">
+                        <Run Text="HTML Agility Pack - http://htmlagilitypack.codeplex.com/"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontSize="10.6666666666667" FontFamily="Segoe UI" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Foreground="#FF253340" Language="en-gb">
+                        <Run Text="Microsoft Public License (Ms-PL)"/>
+                    </Span>
+                    <Run Text=" "/>
+                    <Span Foreground="#FF253340" FontSize="10.6666666666667" FontFamily="Segoe UI" Language="en-gb">
+                        <LineBreak/>
+                    </Span>
+                    <Run Text=" "/>
+                    <Span Foreground="#FF253340" FontSize="10.6666666666667" FontFamily="Segoe UI" Language="en-gb">
+                        <LineBreak/>
+                    </Span>
+                    <Run Text=" "/>
+                    <Span Foreground="#FF253340" Language="en-gb">
+                        <Run Text="This license governs use of the accompanying software. If you use the software, you accept this license. If you do not accept the license, do not use the software."/>
+                    </Span>
+                    <Run Text=" "/>
+                    <Span Foreground="#FF253340" FontSize="10.6666666666667" FontFamily="Segoe UI" Language="en-gb">
+                        <LineBreak/>
+                    </Span>
+                    <Run Text=" "/>
+                    <Span Foreground="#FF253340" FontSize="10.6666666666667" FontFamily="Segoe UI" Language="en-gb">
+                        <LineBreak/>
+                    </Span>
+                    <Run Text=" "/>
+                    <Span Foreground="#FF253340" Language="en-gb">
+                        <Run Text="1. Definitions"/>
+                    </Span>
+                    <Run Text=" "/>
+                    <Span Foreground="#FF253340" FontSize="10.6666666666667" FontFamily="Segoe UI" Language="en-gb">
+                        <LineBreak/>
+                    </Span>
+                    <Run Text=" "/>
+                    <Span Foreground="#FF253340" FontSize="10.6666666666667" FontFamily="Segoe UI" Language="en-gb">
+                        <LineBreak/>
+                    </Span>
+                    <Run Text=" "/>
+                    <Span Foreground="#FF253340" Language="en-gb">
+                        <Run Text="The terms &quot;reproduce,&quot; &quot;reproduction,&quot; &quot;derivative works,&quot; and &quot;distribution&quot; have the same meaning here as under U.S. copyright law."/>
+                    </Span>
+                    <Run Text=" "/>
+                    <Span Foreground="#FF253340" FontSize="10.6666666666667" FontFamily="Segoe UI" Language="en-gb">
+                        <LineBreak/>
+                    </Span>
+                    <Run Text=" "/>
+                    <Span Foreground="#FF253340" FontSize="10.6666666666667" FontFamily="Segoe UI" Language="en-gb">
+                        <LineBreak/>
+                    </Span>
+                    <Run Text=" "/>
+                    <Span Foreground="#FF253340" Language="en-gb">
+                        <Run Text="A &quot;contribution&quot; is the original software, or any additions or changes to the software."/>
+                    </Span>
+                    <Run Text=" "/>
+                    <Span Foreground="#FF253340" FontSize="10.6666666666667" FontFamily="Segoe UI" Language="en-gb">
+                        <LineBreak/>
+                    </Span>
+                    <Run Text=" "/>
+                    <Span Foreground="#FF253340" FontSize="10.6666666666667" FontFamily="Segoe UI" Language="en-gb">
+                        <LineBreak/>
+                    </Span>
+                    <Run Text=" "/>
+                    <Span Foreground="#FF253340" Language="en-gb">
+                        <Run Text="A &quot;contributor&quot; is any person that distributes its contribution under this license."/>
+                    </Span>
+                    <Run Text=" "/>
+                    <Span Foreground="#FF253340" FontSize="10.6666666666667" FontFamily="Segoe UI" Language="en-gb">
+                        <LineBreak/>
+                    </Span>
+                    <Run Text=" "/>
+                    <Span Foreground="#FF253340" FontSize="10.6666666666667" FontFamily="Segoe UI" Language="en-gb">
+                        <LineBreak/>
+                    </Span>
+                    <Run Text=" "/>
+                    <Span Foreground="#FF253340" Language="en-gb">
+                        <Run Text="&quot;Licensed patents&quot; are a contributor's patent claims that read directly on its contribution."/>
+                    </Span>
+                    <Run Text=" "/>
+                    <Span Foreground="#FF253340" FontSize="10.6666666666667" FontFamily="Segoe UI" Language="en-gb">
+                        <LineBreak/>
+                    </Span>
+                    <Run Text=" "/>
+                    <Span Foreground="#FF253340" FontSize="10.6666666666667" FontFamily="Segoe UI" Language="en-gb">
+                        <LineBreak/>
+                    </Span>
+                    <Run Text=" "/>
+                    <Span Foreground="#FF253340" Language="en-gb">
+                        <Run Text="2. Grant of Rights"/>
+                    </Span>
+                    <Run Text=" "/>
+                    <Span Foreground="#FF253340" FontSize="10.6666666666667" FontFamily="Segoe UI" Language="en-gb">
+                        <LineBreak/>
+                    </Span>
+                    <Run Text=" "/>
+                    <Span Foreground="#FF253340" FontSize="10.6666666666667" FontFamily="Segoe UI" Language="en-gb">
+                        <LineBreak/>
+                    </Span>
+                    <Run Text=" "/>
+                    <Span Foreground="#FF253340" Language="en-gb">
+                        <Run Text="(A) Copyright Grant- Subject to the terms of this license, including the license conditions and limitations in section 3, each contributor grants you a non-exclusive, worldwide, royalty-free copyright license to reproduce its contribution, prepare derivative works of its contribution, and distribute its contribution or any derivative works that you create."/>
+                    </Span>
+                    <Run Text=" "/>
+                    <Span Foreground="#FF253340" FontSize="10.6666666666667" FontFamily="Segoe UI" Language="en-gb">
+                        <LineBreak/>
+                    </Span>
+                    <Run Text=" "/>
+                    <Span Foreground="#FF253340" FontSize="10.6666666666667" FontFamily="Segoe UI" Language="en-gb">
+                        <LineBreak/>
+                    </Span>
+                    <Run Text=" "/>
+                    <Span Foreground="#FF253340" Language="en-gb">
+                        <Run Text="(B) Patent Grant- Subject to the terms of this license, including the license conditions and limitations in section 3, each contributor grants you a non-exclusive, worldwide, royalty-free license under its licensed patents to make, have made, use, sell, offer for sale, import, and/or otherwise dispose of its contribution in the software or derivative works of the contribution in the software."/>
+                    </Span>
+                    <Run Text=" "/>
+                    <Span Foreground="#FF253340" FontSize="10.6666666666667" FontFamily="Segoe UI" Language="en-gb">
+                        <LineBreak/>
+                    </Span>
+                    <Run Text=" "/>
+                    <Span Foreground="#FF253340" FontSize="10.6666666666667" FontFamily="Segoe UI" Language="en-gb">
+                        <LineBreak/>
+                    </Span>
+                    <Run Text=" "/>
+                    <Span Foreground="#FF253340" Language="en-gb">
+                        <Run Text="3. Conditions and Limitations"/>
+                    </Span>
+                    <Run Text=" "/>
+                    <Span Foreground="#FF253340" FontSize="10.6666666666667" FontFamily="Segoe UI" Language="en-gb">
+                        <LineBreak/>
+                    </Span>
+                    <Run Text=" "/>
+                    <Span Foreground="#FF253340" FontSize="10.6666666666667" FontFamily="Segoe UI" Language="en-gb">
+                        <LineBreak/>
+                    </Span>
+                    <Run Text=" "/>
+                    <Span Foreground="#FF253340" Language="en-gb">
+                        <Run Text="(A) No Trademark License- This license does not grant you rights to use any contributors' name, logo, or trademarks."/>
+                    </Span>
+                    <Run Text=" "/>
+                    <Span Foreground="#FF253340" FontSize="10.6666666666667" FontFamily="Segoe UI" Language="en-gb">
+                        <LineBreak/>
+                    </Span>
+                    <Run Text=" "/>
+                    <Span Foreground="#FF253340" FontSize="10.6666666666667" FontFamily="Segoe UI" Language="en-gb">
+                        <LineBreak/>
+                    </Span>
+                    <Run Text=" "/>
+                    <Span Foreground="#FF253340" Language="en-gb">
+                        <Run Text="(B) If you bring a patent claim against any contributor over patents that you claim are infringed by the software, your patent license from such contributor to the software ends automatically."/>
+                    </Span>
+                    <Run Text=" "/>
+                    <Span Foreground="#FF253340" FontSize="10.6666666666667" FontFamily="Segoe UI" Language="en-gb">
+                        <LineBreak/>
+                    </Span>
+                    <Run Text=" "/>
+                    <Span Foreground="#FF253340" FontSize="10.6666666666667" FontFamily="Segoe UI" Language="en-gb">
+                        <LineBreak/>
+                    </Span>
+                    <Run Text=" "/>
+                    <Span Foreground="#FF253340" Language="en-gb">
+                        <Run Text="(C) If you distribute any portion of the software, you must retain all copyright, patent, trademark, and attribution notices that are present in the software."/>
+                    </Span>
+                    <Run Text=" "/>
+                    <Span Foreground="#FF253340" FontSize="10.6666666666667" FontFamily="Segoe UI" Language="en-gb">
+                        <LineBreak/>
+                    </Span>
+                    <Run Text=" "/>
+                    <Span Foreground="#FF253340" FontSize="10.6666666666667" FontFamily="Segoe UI" Language="en-gb">
+                        <LineBreak/>
+                    </Span>
+                    <Run Text=" "/>
+                    <Span Foreground="#FF253340" Language="en-gb">
+                        <Run Text="(D) If you distribute any portion of the software in source code form, you may do so only under this license by including a complete copy of this license with your distribution. If you distribute any portion of the software in compiled or object code form, you may only do so under a license that complies with this license."/>
+                    </Span>
+                    <Run Text=" "/>
+                    <Span Foreground="#FF253340" FontSize="10.6666666666667" FontFamily="Segoe UI" Language="en-gb">
+                        <LineBreak/>
+                    </Span>
+                    <Run Text=" "/>
+                    <Span Foreground="#FF253340" FontSize="10.6666666666667" FontFamily="Segoe UI" Language="en-gb">
+                        <LineBreak/>
+                    </Span>
+                    <Run Text=" "/>
+                    <Span Foreground="#FF253340" Language="en-gb">
+                        <Run Text="(E) The software is licensed &quot;as-is.&quot; You bear the risk of using it. The contributors give no express warranties, guarantees or conditions. You may have additional consumer rights under your local laws which this license cannot change. To the extent permitted under your local laws, the contributors exclude the implied warranties of merchantability, fitness for a particular purpose and non-infringement."/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontSize="10.6666666666667" FontFamily="Segoe UI" Margin="0,0,0,10.67" TextAlignment="Left"/>
+                <Paragraph FontSize="10.6666666666667" FontFamily="Segoe UI" Margin="0,0,0,10.67" TextAlignment="Left"/>
+                <Paragraph FontSize="10.6666666666667" FontFamily="Segoe UI" Margin="0,0,0,10.67" TextAlignment="Left"/>
+                <Paragraph FontWeight="Bold" FontSize="14.6666666666667" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Language="de-de">
+                        <Run Text="DotNetZip - http://dotnetzip.codeplex.com/"/>
+                    </Span>
+                </Paragraph>
+                <Paragraph FontWeight="Bold" FontSize="18.6666666666667" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
+                    <Span Foreground="#FF253340" FontWeight="Normal" FontSize="10.6666666666667" FontFamily="Segoe UI" Language="en-gb">
+                        <Run Text="Microsoft Public License (Ms-PL)"/>
+                    </Span>
+                    <Run Text=" "/>
+                    <Span Foreground="#FF253340" FontSize="10.6666666666667" FontFamily="Segoe UI" Language="en-gb">
+                        <LineBreak/>
+                    </Span>
+                    <Run Text=" "/>
+                    <Span Foreground="#FF253340" FontSize="10.6666666666667" FontFamily="Segoe UI" Language="en-gb">
+                        <LineBreak/>
+                    </Span>
+                    <Run Text=" "/>
+                    <Span Foreground="#FF253340" FontWeight="Normal" FontSize="10.6666666666667" FontFamily="Segoe UI" Language="en-gb">
+                        <Run Text="This license governs use of the accompanying software. If you use the software, you accept this license. If you do not accept the license, do not use the software."/>
+                    </Span>
+                    <Run Text=" "/>
+                    <Span Foreground="#FF253340" FontSize="10.6666666666667" FontFamily="Segoe UI" Language="en-gb">
+                        <LineBreak/>
+                    </Span>
+                    <Run Text=" "/>
+                    <Span Foreground="#FF253340" FontSize="10.6666666666667" FontFamily="Segoe UI" Language="en-gb">
+                        <LineBreak/>
+                    </Span>
+                    <Run Text=" "/>
+                    <Span Foreground="#FF253340" FontWeight="Normal" FontSize="10.6666666666667" FontFamily="Segoe UI" Language="en-gb">
+                        <Run Text="1. Definitions"/>
+                    </Span>
+                    <Run Text=" "/>
+                    <Span Foreground="#FF253340" FontSize="10.6666666666667" FontFamily="Segoe UI" Language="en-gb">
+                        <LineBreak/>
+                    </Span>
+                    <Run Text=" "/>
+                    <Span Foreground="#FF253340" FontSize="10.6666666666667" FontFamily="Segoe UI" Language="en-gb">
+                        <LineBreak/>
+                    </Span>
+                    <Run Text=" "/>
+                    <Span Foreground="#FF253340" FontWeight="Normal" FontSize="10.6666666666667" FontFamily="Segoe UI" Language="en-gb">
+                        <Run Text="The terms &quot;reproduce,&quot; &quot;reproduction,&quot; &quot;derivative works,&quot; and &quot;distribution&quot; have the same meaning here as under U.S. copyright law."/>
+                    </Span>
+                    <Run Text=" "/>
+                    <Span Foreground="#FF253340" FontSize="10.6666666666667" FontFamily="Segoe UI" Language="en-gb">
+                        <LineBreak/>
+                    </Span>
+                    <Run Text=" "/>
+                    <Span Foreground="#FF253340" FontSize="10.6666666666667" FontFamily="Segoe UI" Language="en-gb">
+                        <LineBreak/>
+                    </Span>
+                    <Run Text=" "/>
+                    <Span Foreground="#FF253340" FontWeight="Normal" FontSize="10.6666666666667" FontFamily="Segoe UI" Language="en-gb">
+                        <Run Text="A &quot;contribution&quot; is the original software, or any additions or changes to the software."/>
+                    </Span>
+                    <Run Text=" "/>
+                    <Span Foreground="#FF253340" FontSize="10.6666666666667" FontFamily="Segoe UI" Language="en-gb">
+                        <LineBreak/>
+                    </Span>
+                    <Run Text=" "/>
+                    <Span Foreground="#FF253340" FontSize="10.6666666666667" FontFamily="Segoe UI" Language="en-gb">
+                        <LineBreak/>
+                    </Span>
+                    <Run Text=" "/>
+                    <Span Foreground="#FF253340" FontWeight="Normal" FontSize="10.6666666666667" FontFamily="Segoe UI" Language="en-gb">
+                        <Run Text="A &quot;contributor&quot; is any person that distributes its contribution under this license."/>
+                    </Span>
+                    <Run Text=" "/>
+                    <Span Foreground="#FF253340" FontSize="10.6666666666667" FontFamily="Segoe UI" Language="en-gb">
+                        <LineBreak/>
+                    </Span>
+                    <Run Text=" "/>
+                    <Span Foreground="#FF253340" FontSize="10.6666666666667" FontFamily="Segoe UI" Language="en-gb">
+                        <LineBreak/>
+                    </Span>
+                    <Run Text=" "/>
+                    <Span Foreground="#FF253340" FontWeight="Normal" FontSize="10.6666666666667" FontFamily="Segoe UI" Language="en-gb">
+                        <Run Text="&quot;Licensed patents&quot; are a contributor's patent claims that read directly on its contribution."/>
+                    </Span>
+                    <Run Text=" "/>
+                    <Span Foreground="#FF253340" FontSize="10.6666666666667" FontFamily="Segoe UI" Language="en-gb">
+                        <LineBreak/>
+                    </Span>
+                    <Run Text=" "/>
+                    <Span Foreground="#FF253340" FontSize="10.6666666666667" FontFamily="Segoe UI" Language="en-gb">
+                        <LineBreak/>
+                    </Span>
+                    <Run Text=" "/>
+                    <Span Foreground="#FF253340" FontWeight="Normal" FontSize="10.6666666666667" FontFamily="Segoe UI" Language="en-gb">
+                        <Run Text="2. Grant of Rights"/>
+                    </Span>
+                    <Run Text=" "/>
+                    <Span Foreground="#FF253340" FontSize="10.6666666666667" FontFamily="Segoe UI" Language="en-gb">
+                        <LineBreak/>
+                    </Span>
+                    <Run Text=" "/>
+                    <Span Foreground="#FF253340" FontSize="10.6666666666667" FontFamily="Segoe UI" Language="en-gb">
+                        <LineBreak/>
+                    </Span>
+                    <Run Text=" "/>
+                    <Span Foreground="#FF253340" FontWeight="Normal" FontSize="10.6666666666667" FontFamily="Segoe UI" Language="en-gb">
+                        <Run Text="(A) Copyright Grant- Subject to the terms of this license, including the license conditions and limitations in section 3, each contributor grants you a non-exclusive, worldwide, royalty-free copyright license to reproduce its contribution, prepare derivative works of its contribution, and distribute its contribution or any derivative works that you create."/>
+                    </Span>
+                    <Run Text=" "/>
+                    <Span Foreground="#FF253340" FontSize="10.6666666666667" FontFamily="Segoe UI" Language="en-gb">
+                        <LineBreak/>
+                    </Span>
+                    <Run Text=" "/>
+                    <Span Foreground="#FF253340" FontSize="10.6666666666667" FontFamily="Segoe UI" Language="en-gb">
+                        <LineBreak/>
+                    </Span>
+                    <Run Text=" "/>
+                    <Span Foreground="#FF253340" FontWeight="Normal" FontSize="10.6666666666667" FontFamily="Segoe UI" Language="en-gb">
+                        <Run Text="(B) Patent Grant- Subject to the terms of this license, including the license conditions and limitations in section 3, each contributor grants you a non-exclusive, worldwide, royalty-free license under its licensed patents to make, have made, use, sell, offer for sale, import, and/or otherwise dispose of its contribution in the software or derivative works of the contribution in the software."/>
+                    </Span>
+                    <Run Text=" "/>
+                    <Span Foreground="#FF253340" FontSize="10.6666666666667" FontFamily="Segoe UI" Language="en-gb">
+                        <LineBreak/>
+                    </Span>
+                    <Run Text=" "/>
+                    <Span Foreground="#FF253340" FontSize="10.6666666666667" FontFamily="Segoe UI" Language="en-gb">
+                        <LineBreak/>
+                    </Span>
+                    <Run Text=" "/>
+                    <Span Foreground="#FF253340" FontWeight="Normal" FontSize="10.6666666666667" FontFamily="Segoe UI" Language="en-gb">
+                        <Run Text="3. Conditions and Limitations"/>
+                    </Span>
+                    <Run Text=" "/>
+                    <Span Foreground="#FF253340" FontSize="10.6666666666667" FontFamily="Segoe UI" Language="en-gb">
+                        <LineBreak/>
+                    </Span>
+                    <Run Text=" "/>
+                    <Span Foreground="#FF253340" FontSize="10.6666666666667" FontFamily="Segoe UI" Language="en-gb">
+                        <LineBreak/>
+                    </Span>
+                    <Run Text=" "/>
+                    <Span Foreground="#FF253340" FontWeight="Normal" FontSize="10.6666666666667" FontFamily="Segoe UI" Language="en-gb">
+                        <Run Text="(A) No Trademark License- This license does not grant you rights to use any contributors' name, logo, or trademarks."/>
+                    </Span>
+                    <Run Text=" "/>
+                    <Span Foreground="#FF253340" FontSize="10.6666666666667" FontFamily="Segoe UI" Language="en-gb">
+                        <LineBreak/>
+                    </Span>
+                    <Run Text=" "/>
+                    <Span Foreground="#FF253340" FontSize="10.6666666666667" FontFamily="Segoe UI" Language="en-gb">
+                        <LineBreak/>
+                    </Span>
+                    <Run Text=" "/>
+                    <Span Foreground="#FF253340" FontWeight="Normal" FontSize="10.6666666666667" FontFamily="Segoe UI" Language="en-gb">
+                        <Run Text="(B) If you bring a patent claim against any contributor over patents that you claim are infringed by the software, your patent license from such contributor to the software ends automatically."/>
+                    </Span>
+                    <Run Text=" "/>
+                    <Span Foreground="#FF253340" FontSize="10.6666666666667" FontFamily="Segoe UI" Language="en-gb">
+                        <LineBreak/>
+                    </Span>
+                    <Run Text=" "/>
+                    <Span Foreground="#FF253340" FontSize="10.6666666666667" FontFamily="Segoe UI" Language="en-gb">
+                        <LineBreak/>
+                    </Span>
+                    <Run Text=" "/>
+                    <Span Foreground="#FF253340" FontWeight="Normal" FontSize="10.6666666666667" FontFamily="Segoe UI" Language="en-gb">
+                        <Run Text="(C) If you distribute any portion of the software, you must retain all copyright, patent, trademark, and attribution notices that are present in the software."/>
+                    </Span>
+                    <Run Text=" "/>
+                    <Span Foreground="#FF253340" FontSize="10.6666666666667" FontFamily="Segoe UI" Language="en-gb">
+                        <LineBreak/>
+                    </Span>
+                    <Run Text=" "/>
+                    <Span Foreground="#FF253340" FontSize="10.6666666666667" FontFamily="Segoe UI" Language="en-gb">
+                        <LineBreak/>
+                    </Span>
+                    <Run Text=" "/>
+                    <Span Foreground="#FF253340" FontWeight="Normal" FontSize="10.6666666666667" FontFamily="Segoe UI" Language="en-gb">
+                        <Run Text="(D) If you distribute any portion of the software in source code form, you may do so only under this license by including a complete copy of this license with your distribution. If you distribute any portion of the software in compiled or object code form, you may only do so under a license that complies with this license."/>
+                    </Span>
+                    <Run Text=" "/>
+                    <Span Foreground="#FF253340" FontSize="10.6666666666667" FontFamily="Segoe UI" Language="en-gb">
+                        <LineBreak/>
+                    </Span>
+                    <Run Text=" "/>
+                    <Span Foreground="#FF253340" FontSize="10.6666666666667" FontFamily="Segoe UI" Language="en-gb">
+                        <LineBreak/>
+                    </Span>
+                    <Run Text=" "/>
+                    <Span Foreground="#FF253340" FontWeight="Normal" FontSize="10.6666666666667" FontFamily="Segoe UI" Language="en-gb">
+                        <Run Text="(E) The software is licensed &quot;as-is.&quot; You bear the risk of using it. The contributors give no express warranties, guarantees or conditions. You may have additional consumer rights under your local laws which this license cannot change. To the extent permitted under your local laws, the contributors exclude the implied warranties of merchantability, fitness for a particular purpose and non-infringement."/>
+                    </Span>
+                </Paragraph>
+            </FlowDocument>
+        </RichTextBox>
+        <Label x:Name="AppVersionLabel" Content="v0.0.0.0" HorizontalAlignment="Right" Margin="0,0,10,10" VerticalAlignment="Bottom" FontSize="10" Height="16" Padding="0" Foreground="#FF7A7A7A"/>
+        <Label Content="made for" HorizontalAlignment="Left" Margin="698,331,0,0" VerticalAlignment="Top" FontSize="14" Height="16" Padding="0"/>
+        <Label Content="view on" HorizontalAlignment="Left" Margin="409,327,0,0" VerticalAlignment="Top" FontSize="14" Height="22" Padding="0"/>
+        <Image x:Name="setagonImage" HorizontalAlignment="Left" Height="43" Margin="405,337,0,0" VerticalAlignment="Top" Width="172" Source="Resources/New_Tin_Black.png" Cursor="Hand"/>
+        <Image x:Name="blenderImage" HorizontalAlignment="Left" Height="60" Margin="648,335,0,0" VerticalAlignment="Top" Width="154" Source="Resources/blender-socket.png" Cursor="Hand"/>
+        <Label Content="scroll down to view other licenses" HorizontalAlignment="Left" Margin="398,286,0,0" VerticalAlignment="Top" FontSize="10" Height="16" Padding="0"/>
+        <Button x:Name="DonateButton" Content="Donate" HorizontalAlignment="Left" Margin="405,0,0,14" VerticalAlignment="Bottom" Width="205" Background="#FFAFB2FF" Height="25" FontWeight="Bold" FontSize="16" BorderThickness="2,0,0,0"/>
+        <Button x:Name="AboutButton" Content="About &gt;" HorizontalAlignment="Right" Margin="0,0,48,10" VerticalAlignment="Bottom" Width="59" Background="#FFACB0FF" FontWeight="Bold" BorderThickness="2,0,0,0" HorizontalContentAlignment="Left" Padding="5,1,1,1"/>
+        <Button x:Name="DeleteAllVersions" Content="Delete all Blender versions" HorizontalAlignment="Left" Margin="10,0,0,30" VerticalAlignment="Bottom" Width="234" Background="White" BorderThickness="2,0,0,0" Padding="5,1,1,1" HorizontalContentAlignment="Left"/>
+
+    </Grid>
+</Window>
