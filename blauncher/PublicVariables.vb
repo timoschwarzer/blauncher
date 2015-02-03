@@ -9,8 +9,7 @@
                     IO.Directory.CreateDirectory(_defaultDataPath).Attributes = IO.FileAttributes.Hidden
                 End If
 
-                My.Settings.DataPath = _defaultDataPath
-                My.Settings.Save()
+                appdata = _defaultDataPath
             End If
 
             Return My.Settings.DataPath
