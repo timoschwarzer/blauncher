@@ -8,7 +8,7 @@ Imports System.Windows.Media.Animation
 
 Class MainWindow
 
-#Region "Variablen"
+#Region "Vars"
     Dim AnimBase As New AnimationBase(Me)
     Const MaximumProgress As Integer = 100
     Public CheckArgs As Boolean = True
@@ -17,6 +17,8 @@ Class MainWindow
 #Region "Event Handler"
     Private Sub RootWindow_Loaded() Handles RootWindow.Loaded
         Opacity = 0
+
+        My.Settings.Upgrade()
 
         If CheckArgs Then
             If Environment.GetCommandLineArgs().Count = 2 AndAlso Environment.GetCommandLineArgs()(1) = "-launch" Then
@@ -90,7 +92,7 @@ Class MainWindow
     End Sub
 #End Region
 
-#Region "Funktionen"
+#Region "Functions"
     Private Sub SetProgress(value As Integer, Optional maximum As Integer = MaximumProgress, Optional speed As Integer = 1000)
         Dispatcher.Invoke( _
             Sub()
@@ -381,7 +383,7 @@ Class MainWindow
     End Sub
 #End Region
 
-#Region "Strukturen"
+#Region "Structures"
     Public Structure UpdateSearchResult
         Public versionUrl As String
         Public versionChk As String
@@ -389,7 +391,7 @@ Class MainWindow
     End Structure
 #End Region
 
-#Region "CancelEvents"
+#Region "CancelButton EventHandler"
     Private Sub CancelLabel_MouseLeftButtonUp(sender As Object, e As MouseButtonEventArgs) Handles CancelLabel.MouseLeftButtonUp
         Application.Current.Shutdown()
     End Sub

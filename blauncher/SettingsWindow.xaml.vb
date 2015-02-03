@@ -2,6 +2,7 @@
 Imports System.Net
 Imports HtmlAgilityPack
 Imports Ionic.Zip
+Imports Microsoft.WindowsAPICodePack.Dialogs
 
 Public Class SettingsWindow
 
@@ -25,6 +26,8 @@ Public Class SettingsWindow
         Next
 
         AppVersionLabel.Content = "v" + My.Application.Info.Version.ToString
+
+        DataPathTextBox.Text = appdata
     End Sub
     Private Sub UpdateNowButton_Click(sender As Object, e As RoutedEventArgs) Handles UpdateNowButton.Click
         UpdateNowButton.Visibility = Windows.Visibility.Hidden
@@ -100,10 +103,11 @@ Public Class SettingsWindow
             Dim counter As Integer = 0
             For Each Dir As String In IO.Directory.GetDirectories(appdata)
                 Try
-                    MsgBox(Dir)
-                    IO.Directory.Delete(Dir, True) : counter += 1
+                    My.Computer.FileSystem.DeleteDirectory(Dir, FileIO.DeleteDirectoryOption.DeleteAllContents)
                 Catch
                 End Try
+
+                counter += 1
             Next
             Try
                 IO.File.Delete(appdata + "version.blnc")
@@ -133,7 +137,7 @@ Public Class SettingsWindow
             MessageBox.Show("Couldn't create shortcut." + vbNewLine + "You have to create a shortcut to bLauncher.exe", "", MessageBoxButton.OK, MessageBoxImage.Error)
         End If
     End Sub
-    Private Sub ChromeGrid_MouseDown(sender As Object, e As MouseButtonEventArgs) Handles ChromeGrid.MouseDown
+    Private Sub ChromeGrid_MouseLeftButtonDown(sender As Object, e As MouseButtonEventArgs) Handles ChromeGrid.MouseLeftButtonDown
         DragMove()
     End Sub
     Private Sub setagonImage_MouseLeftButtonDown(sender As Object, e As MouseButtonEventArgs) Handles setagonImage.MouseLeftButtonDown
@@ -160,10 +164,18 @@ Public Class SettingsWindow
                         "I'm Timo, a 15-years old student from Germany." + vbNewLine + _
                         "I make and made everything next to school as a hobby!" + vbNewLine + _
                         "I am VERY VERY HAPPY for every donation!" + vbNewLine + _
-                        "You will now be redirected to my website. Just click the big grey button with the PayPal logo to make a donation with PayPal " + vbNewLine + _
+                        "You will now be redirected to my website. Just click the blue button with the PayPal logo to make a donation with PayPal " + vbNewLine + _
                         "or click on the Amazon-Button to buy things on Amazon!" + vbNewLine + vbNewLine + _
                         "THANK YOU!", "", MessageBoxButton.OK, MessageBoxImage.Information)
         Process.Start("http://setagon.com/donate")
+    End Sub
+    Private Sub DataPathChangeButton_Click(sender As Object, e As RoutedEventArgs) Handles DataPathChangeButton.Click
+        Using fbd As New CommonOpenFileDialog With {.IsFolderPicker = True}
+            If fbd.ShowDialog = CommonFileDialogResult.Ok Then
+                appdata = fbd.FileName
+                DataPathTextBox.Text = appdata
+            End If
+        End Using
     End Sub
 #End Region
 
@@ -334,18 +346,6 @@ Public Class SettingsWindow
                 ShowCancelButton()
             End Sub)
 
-        'If IO.Directory.Exists(appdata + updateSearchResult.versionChk) Then
-        '    My.Computer.FileSystem.WriteAllText(appdata + "version.blnc", updateSearchResult.versionChk, False)
-        '    Dispatcher.Invoke( _
-        '        Sub()
-        '            UpdateNowButton.Visibility = Windows.Visibility.Visible
-        '            ShowCancelButton()
-        '            MainProgressBar.Value = 0
-        '            GetVersions()
-        '        End Sub)
-        '    Exit Sub
-        'End If
-
         Dim wc As New WebClient
         AddHandler wc.DownloadProgressChanged, _
             Sub(sender As Object, e As DownloadProgressChangedEventArgs)
@@ -476,6 +476,7 @@ Public Class SettingsWindow
 
 #Region "CancelEvents"
     Private Sub CancelLabel_MouseLeftButtonUp(sender As Object, e As MouseButtonEventArgs) Handles CancelLabel.MouseLeftButtonUp
+        My.Settings.Save()
         Application.Current.Shutdown()
     End Sub
     Private Sub CancelLabel_MouseEnter(sender As Object, e As MouseEventArgs) Handles CancelLabel.MouseEnter

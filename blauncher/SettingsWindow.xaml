@@ -1,7 +1,7 @@
 ﻿<Window x:Name="SettingsWindowX" x:Class="SettingsWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    Title="Settings" Height="509.667" Width="414" Icon="blender-logo.ico" AllowsTransparency="True" WindowStyle="None" Background="{x:Null}" WindowStartupLocation="CenterScreen">
+    Title="Settings" Height="547.667" Width="414" Icon="blender-logo.ico" AllowsTransparency="True" WindowStyle="None" Background="{x:Null}" WindowStartupLocation="CenterScreen">
     <Window.Effect>
         <DropShadowEffect BlurRadius="30" ShadowDepth="0" Opacity="0.7"/>
     </Window.Effect>
@@ -14,12 +14,17 @@
                 <Label Content="grabbed from the blender buildbot" HorizontalAlignment="Left" Margin="29,62,0,0" VerticalAlignment="Top" FontSize="10" Height="16" Padding="0"/>
             </Grid>
         </GroupBox>
-        <GroupBox Header="Download Options" HorizontalAlignment="Left" Margin="10,161,0,0" VerticalAlignment="Top" Height="54" Width="333">
-            <CheckBox x:Name="AutoUpdateCheckBox" Content="Automatically update Blender to the latest version" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+        <GroupBox Header="Download Options" HorizontalAlignment="Left" Margin="10,161,0,0" VerticalAlignment="Top" Height="105" Width="333">
+            <Grid >
+                <CheckBox x:Name="AutoUpdateCheckBox" Content="Automatically update Blender to the latest version" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+                <Label Content="Data path:" HorizontalAlignment="Left" Margin="10,30,0,0" VerticalAlignment="Top" Padding="0,5,5,5"/>
+                <TextBox x:Name="DataPathTextBox" Margin="10,0,33,8" TextWrapping="Wrap" Text="..." VerticalContentAlignment="Center" Padding="3,0,0,0" IsReadOnly="True" Height="23" VerticalAlignment="Bottom"/>
+                <Button x:Name="DataPathChangeButton" Content="..." Margin="288,0,6,8" VerticalAlignment="Bottom" Background="White" BorderThickness="0,1,1,1" HorizontalContentAlignment="Center" Padding="0" Height="23" VerticalContentAlignment="Center" BorderBrush="#FFABADB3"/>
+            </Grid>
         </GroupBox>
         <ProgressBar x:Name="MainProgressBar" HorizontalAlignment="Left" Height="18" Margin="10,0,0,10" VerticalAlignment="Bottom" Width="234" Foreground="#FF004591"/>
         <Button x:Name="UpdateNowButton" Content="Download latest version now" HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Bottom" Width="234" Background="White" BorderThickness="2,0,0,0" Padding="5,1,1,1" HorizontalContentAlignment="Left" IsEnabled="False"/>
-        <GroupBox Header="Versions" HorizontalAlignment="Left" Margin="10,220,0,0" VerticalAlignment="Top" Height="104" Width="333">
+        <GroupBox Header="Versions" HorizontalAlignment="Left" Margin="10,271,0,0" VerticalAlignment="Top" Height="104" Width="333">
             <Grid>
                 <Label Content="Release:&#xA;Experimental:&#xD;&#xA;Installed:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
                 <Label x:Name="LatestVersionsLabel" Content="Searching...&#xD;&#xA;Searching...&#xD;&#xA;Searching..." Margin="96,11,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="215"/>
@@ -37,7 +42,7 @@
             <FlowDocument>
                 <Paragraph FontWeight="Bold" FontSize="14.6666666666667" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
                     <Span Language="de-de">
-                        <Run Text="bLaucher – http://setagon.com/blauncher"/>
+                        <Run Text="bLaucher – http://setagon.com/projects/blauncher"/>
                     </Span>
                 </Paragraph>
                 <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
