@@ -468,6 +468,10 @@ Public Class SettingsWindow
             Return True
         Catch ex As Exception
             ' Fehler! ggf. Link-Datei löschen, falls bereit erstellt
+
+            MessageBox.Show("There was an error while creating the shortcut:" + vbNewLine + _
+                            ex.Message)
+
             If System.IO.File.Exists(sLinkFile) Then Kill(sLinkFile)
             Return False
         End Try
@@ -482,14 +486,14 @@ Public Class SettingsWindow
     Private Sub CancelLabel_MouseEnter(sender As Object, e As MouseEventArgs) Handles CancelLabel.MouseEnter
         Dim scaleTransform As New ScaleTransform(1, 1)
         CancelLabel.RenderTransform = scaleTransform
-        Dim anim As New DoubleAnimation(4, New Duration(New TimeSpan(0, 0, 0, 0, 300)))
+        Dim anim As New DoubleAnimation(1.5, New Duration(New TimeSpan(0, 0, 0, 0, 300)))
         Dim pe As New PowerEase With {.EasingMode = EasingMode.EaseOut, .Power = 7}
         anim.EasingFunction = pe
         scaleTransform.BeginAnimation(Windows.Media.ScaleTransform.ScaleXProperty, anim)
         scaleTransform.BeginAnimation(Windows.Media.ScaleTransform.ScaleYProperty, anim)
     End Sub
     Private Sub CancelLabel_MouseLeave(sender As Object, e As MouseEventArgs) Handles CancelLabel.MouseLeave
-        Dim scaleTransform As New ScaleTransform(4, 4)
+        Dim scaleTransform As New ScaleTransform(1.5, 1.5)
         CancelLabel.RenderTransform = scaleTransform
         Dim anim As New DoubleAnimation(1, New Duration(New TimeSpan(0, 0, 0, 0, 300)))
         Dim pe As New PowerEase With {.EasingMode = EasingMode.EaseOut, .Power = 7}

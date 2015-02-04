@@ -35,7 +35,7 @@
         <Button x:Name="CreateBlenderShortcut_Copy" Content="Create 'bLauncher Settings' shortcut" HorizontalAlignment="Left" Margin="10,0,0,90" VerticalAlignment="Bottom" Width="234" Background="White" BorderThickness="2,0,0,0" HorizontalContentAlignment="Left" Padding="5,1,1,1"/>
         <Grid x:Name="ChromeGrid" HorizontalAlignment="Left" Height="28" Margin="2,2,0,0" VerticalAlignment="Top" Width="314" Background="White">
             <Image x:Name="ChromeBar" HorizontalAlignment="Left" Height="28" VerticalAlignment="Top" Width="31" Source="blender-logo.ico"/>
-            <Button x:Name="LaunchBlenderButton" Content="Launch Blender" HorizontalAlignment="Left" Margin="36,0,0,0" VerticalAlignment="Top" Width="101" Height="28" Background="White" BorderBrush="White"/>
+            <Button x:Name="LaunchBlenderButton" Content="Launch Blender" HorizontalAlignment="Right" Margin="0,-2,8,0" VerticalAlignment="Top" Width="101" Height="30" BorderBrush="#FF004591" BorderThickness="2,0,2,2" Background="{x:Null}"/>
         </Grid>
         <Label x:Name="CancelLabel" Content="r" HorizontalAlignment="Right" VerticalAlignment="Top" Foreground="#FF004591" Cursor="Hand" FontFamily="Marlett" FontSize="18" Width="46" HorizontalContentAlignment="Center" RenderTransformOrigin="0.501,0.5"/>
         <RichTextBox HorizontalAlignment="Left" Height="230" Margin="398,56,0,0" VerticalAlignment="Top" Width="416" FontSize="10">
