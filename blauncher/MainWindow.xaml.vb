@@ -21,6 +21,8 @@ Class MainWindow
         Try
             If Not My.Settings.SettingsUpgraded Then
                 My.Settings.Upgrade()
+                My.Settings.SettingsUpgraded = True
+                My.Settings.Save()
             End If
         Catch ex As Exception
 
