@@ -18,7 +18,13 @@ Class MainWindow
     Private Sub RootWindow_Loaded() Handles RootWindow.Loaded
         Opacity = 0
 
-        My.Settings.Upgrade()
+        Try
+            If Not My.Settings.SettingsUpgraded Then
+                My.Settings.Upgrade()
+            End If
+        Catch ex As Exception
+
+        End Try
 
         If CheckArgs Then
             If Environment.GetCommandLineArgs().Count = 2 AndAlso Environment.GetCommandLineArgs()(1) = "-launch" Then

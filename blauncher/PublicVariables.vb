@@ -1,6 +1,6 @@
 ﻿Module PublicVariables
 
-    Private _defaultDataPath As String = My.Computer.FileSystem.SpecialDirectories.MyDocuments + "\.blauncher"
+    Private _defaultDataPath As String = My.Computer.FileSystem.SpecialDirectories.MyDocuments + "\.blauncher\"
 
     Public Property appdata As String
         Get
