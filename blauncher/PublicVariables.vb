@@ -1,15 +1,27 @@
-﻿Module PublicVariables
+﻿Imports Microsoft.WindowsAPICodePack.Dialogs
+
+Module PublicVariables
 
     Private _defaultDataPath As String = My.Computer.FileSystem.SpecialDirectories.MyDocuments + "\.blauncher\"
 
     Public Property appdata As String
         Get
             If My.Settings.DataPath = "" Or Not IO.Directory.Exists(My.Settings.DataPath) Then
-                If Not IO.Directory.Exists(_defaultDataPath) Then
-                    IO.Directory.CreateDirectory(_defaultDataPath).Attributes = IO.FileAttributes.Hidden
-                End If
+                Try
+                    If Not IO.Directory.Exists(_defaultDataPath) Then
+                        IO.Directory.CreateDirectory(_defaultDataPath).Attributes = IO.FileAttributes.Hidden
+                    End If
 
-                appdata = _defaultDataPath
+                    appdata = _defaultDataPath
+                Catch ex As Exception
+                    Using fbd As New CommonOpenFileDialog With {.IsFolderPicker = True}
+                        If fbd.ShowDialog = CommonFileDialogResult.Ok Then
+                            appdata = fbd.FileName
+                        Else
+                            Application.Current.Shutdown()
+                        End If
+                    End Using
+                End Try
             End If
 
             Return My.Settings.DataPath
