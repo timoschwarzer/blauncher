@@ -18,12 +18,16 @@ Public Class SettingsWindow
         LoadSettings()
         GetVersions()
 
-        For Each File As String In IO.Directory.GetFiles(appdata)
-            Try
-                If File.EndsWith(".zip") Then IO.File.Delete(File)
-            Catch ex As Exception
-            End Try
-        Next
+        Try
+            For Each File As String In IO.Directory.GetFiles(appdata)
+                Try
+                    If File.EndsWith(".zip") Then IO.File.Delete(File)
+                Catch ex As Exception
+                End Try
+            Next
+        Catch ex As Exception
+            Debug.Print("Couldn't delete remaining ZIP files.")
+        End Try
 
         AppVersionLabel.Content = "v" + My.Application.Info.Version.ToString
 

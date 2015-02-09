@@ -14,6 +14,7 @@ Module PublicVariables
 
                     appdata = _defaultDataPath
                 Catch ex As Exception
+                    MessageBox.Show("Please tell me the directory where I should save the different blender versions.", "", MessageBoxButton.OK, MessageBoxImage.Information)
                     Using fbd As New CommonOpenFileDialog With {.IsFolderPicker = True}
                         If fbd.ShowDialog = CommonFileDialogResult.Ok Then
                             appdata = fbd.FileName
