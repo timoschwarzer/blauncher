@@ -55,5 +55,5 @@ Imports System.Windows
 ' übernehmen, indem Sie "*" eingeben:
 ' <Assembly: AssemblyVersion("1.0.*")> 
 
-<Assembly: AssemblyVersion("1.2.0.3")> 
-<Assembly: AssemblyFileVersion("1.2.0.3")> 
+<Assembly: AssemblyVersion("1.2.0.5")> 
+<Assembly: AssemblyFileVersion("1.2.0.5")> 

@@ -34,7 +34,7 @@ Public Class SettingsWindow
         DataPathTextBox.Text = appdata
     End Sub
     Private Sub UpdateNowButton_Click(sender As Object, e As RoutedEventArgs) Handles UpdateNowButton.Click
-        UpdateNowButton.Visibility = Windows.Visibility.Hidden
+        UpdateNowButton.Visibility = System.Windows.Visibility.Hidden
 
         Task.Run( _
             Sub()
@@ -62,7 +62,7 @@ Public Class SettingsWindow
                         Dispatcher.Invoke( _
                             Sub()
                                 MessageBox.Show("Latest version is already installed.", "", MessageBoxButton.OK, MessageBoxImage.Information)
-                                UpdateNowButton.Visibility = Windows.Visibility.Visible
+                                UpdateNowButton.Visibility = System.Windows.Visibility.Visible
                                 MainProgressBar.Value = 0
                             End Sub)
                     End If
@@ -144,9 +144,6 @@ Public Class SettingsWindow
     Private Sub ChromeGrid_MouseLeftButtonDown(sender As Object, e As MouseButtonEventArgs) Handles ChromeGrid.MouseLeftButtonDown
         DragMove()
     End Sub
-    Private Sub setagonImage_MouseLeftButtonDown(sender As Object, e As MouseButtonEventArgs) Handles setagonImage.MouseLeftButtonDown
-        Process.Start("http://setagon.com")
-    End Sub
     Private Sub blenderImage_MouseLeftButtonDown(sender As Object, e As MouseButtonEventArgs) Handles blenderImage.MouseLeftButtonDown
         Process.Start("http://blender.org")
     End Sub
@@ -164,14 +161,7 @@ Public Class SettingsWindow
         End If
     End Sub
     Private Sub DonateButton_Click(sender As Object, e As RoutedEventArgs) Handles DonateButton.Click
-        MessageBox.Show("Hello!" + vbNewLine + _
-                        "I'm Timo, a 15-years old student from Germany." + vbNewLine + _
-                        "I make and made everything next to school as a hobby!" + vbNewLine + _
-                        "I am VERY VERY HAPPY for every donation!" + vbNewLine + _
-                        "You will now be redirected to my website. Just click the blue button with the PayPal logo to make a donation with PayPal " + vbNewLine + _
-                        "or click on the Amazon-Button to buy things on Amazon!" + vbNewLine + vbNewLine + _
-                        "THANK YOU!", "", MessageBoxButton.OK, MessageBoxImage.Information)
-        Process.Start("http://setagon.com/donate")
+        Process.Start("https://timoschwarzer.com/donate")
     End Sub
     Private Sub DataPathChangeButton_Click(sender As Object, e As RoutedEventArgs) Handles DataPathChangeButton.Click
         Using fbd As New CommonOpenFileDialog With {.IsFolderPicker = True}
@@ -260,35 +250,49 @@ Public Class SettingsWindow
 
         Dim myUpdateSearchResult As New UpdateSearchResult
 
-        Dim foundWin64Node As Boolean = False
-        For Each TableRowNode As HtmlNode In newHtmlDocument.GetElementbyId("downloadtable").ChildNodes
-            For Each TableDataNode As HtmlNode In TableRowNode.ChildNodes
-                If TableDataNode.OriginalName = "td" Then
-                    For Each ANode As HtmlNode In TableDataNode.ChildNodes
-                        If ANode.OriginalName = "a" Then
-                            Dim fileHref As String = ANode.Attributes("href").Value
-                            Dim checkSum As String = ""
+        Try
+            Dim foundWin64Node As Boolean = False
+            For Each TableRowNode As HtmlNode In newHtmlDocument.DocumentNode.SelectNodes("//table[contains(@class,'table table-striped table-hover box')]")
+                For Each TableDataNode As HtmlNode In TableRowNode.ChildNodes
+                    Debug.Print(TableDataNode.OriginalName)
+                    If TableDataNode.OriginalName = "tr" Then
 
-                            Debug.Print(fileHref)
+                        Dim cnt As Integer = 0
+                        For Each TDNode As HtmlNode In TableDataNode.ChildNodes
+                            Debug.Print("  -" + TDNode.OriginalName)
+                            If TDNode.OriginalName = "td" Then
+                                cnt += 1
 
-                            If fileHref.StartsWith("blender-") And fileHref.EndsWith("-win64.zip") Then
-                                checkSum = fileHref.Split("-")(2)
+                                If cnt = 3 Then
+                                    Dim ANode As HtmlNode = TDNode.FirstChild
+                                    Dim fileHref As String = ANode.Attributes("href").Value
+                                    Dim checkSum As String = ""
 
-                                myUpdateSearchResult.versionChk = checkSum
-                                myUpdateSearchResult.versionUrl = "https://builder.blender.org/download/" + fileHref
-                                myUpdateSearchResult.versionFile = fileHref.Remove(fileHref.Length - 4)
+                                    Debug.Print(fileHref)
 
-                                foundWin64Node = True
+                                    If fileHref.StartsWith("blender-") And fileHref.EndsWith("-win64.zip") Then
+                                        checkSum = fileHref.Split("-")(2)
+
+                                        myUpdateSearchResult.versionChk = checkSum
+                                        myUpdateSearchResult.versionUrl = "https://builder.blender.org/download/" + fileHref
+                                        myUpdateSearchResult.versionFile = fileHref.Remove(fileHref.Length - 4)
+
+                                        foundWin64Node = True
+                                    End If
+
+                                    If foundWin64Node Then Exit For
+                                End If
                             End If
-
-                            If foundWin64Node Then Exit For
-                        End If
-                    Next
-                    If foundWin64Node Then Exit For
-                End If
+                        Next
+                        If foundWin64Node Then Exit For
+                    End If
+                Next
+                If foundWin64Node Then Exit For
             Next
-            If foundWin64Node Then Exit For
-        Next
+        Catch ex As Exception
+            Debug.Print(ex.StackTrace)
+        End Try
+
 
         Return myUpdateSearchResult
     End Function
@@ -392,7 +396,7 @@ Public Class SettingsWindow
                         Dispatcher.Invoke( _
                            Sub()
                                RegisterBlenderFileExtension()
-                               UpdateNowButton.Visibility = Windows.Visibility.Visible
+                               UpdateNowButton.Visibility = System.Windows.Visibility.Visible
                                ShowCancelButton()
                                MainProgressBar.Value = 0
                                GetVersions()
@@ -493,8 +497,8 @@ Public Class SettingsWindow
         Dim anim As New DoubleAnimation(1.5, New Duration(New TimeSpan(0, 0, 0, 0, 300)))
         Dim pe As New PowerEase With {.EasingMode = EasingMode.EaseOut, .Power = 7}
         anim.EasingFunction = pe
-        scaleTransform.BeginAnimation(Windows.Media.ScaleTransform.ScaleXProperty, anim)
-        scaleTransform.BeginAnimation(Windows.Media.ScaleTransform.ScaleYProperty, anim)
+        scaleTransform.BeginAnimation(System.Windows.Media.ScaleTransform.ScaleXProperty, anim)
+        scaleTransform.BeginAnimation(System.Windows.Media.ScaleTransform.ScaleYProperty, anim)
     End Sub
     Private Sub CancelLabel_MouseLeave(sender As Object, e As MouseEventArgs) Handles CancelLabel.MouseLeave
         Dim scaleTransform As New ScaleTransform(1.5, 1.5)
@@ -502,8 +506,8 @@ Public Class SettingsWindow
         Dim anim As New DoubleAnimation(1, New Duration(New TimeSpan(0, 0, 0, 0, 300)))
         Dim pe As New PowerEase With {.EasingMode = EasingMode.EaseOut, .Power = 7}
         anim.EasingFunction = pe
-        scaleTransform.BeginAnimation(Windows.Media.ScaleTransform.ScaleXProperty, anim)
-        scaleTransform.BeginAnimation(Windows.Media.ScaleTransform.ScaleYProperty, anim)
+        scaleTransform.BeginAnimation(System.Windows.Media.ScaleTransform.ScaleXProperty, anim)
+        scaleTransform.BeginAnimation(System.Windows.Media.ScaleTransform.ScaleYProperty, anim)
     End Sub
     Private Sub ShowCancelButton()
         CancelLabel.IsEnabled = True

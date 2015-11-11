@@ -23,26 +23,26 @@
             </Grid>
         </GroupBox>
         <ProgressBar x:Name="MainProgressBar" HorizontalAlignment="Left" Height="18" Margin="10,0,0,10" VerticalAlignment="Bottom" Width="234" Foreground="#FF004591"/>
-        <Button x:Name="UpdateNowButton" Content="Download latest version now" HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Bottom" Width="234" Background="White" BorderThickness="2,0,0,0" Padding="5,1,1,1" HorizontalContentAlignment="Left" IsEnabled="False"/>
+        <Button x:Name="UpdateNowButton" Content="Download latest version now" HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Bottom" Width="234" Background="White" BorderThickness="2,0,0,0" Padding="5,1,1,1" HorizontalContentAlignment="Left" IsEnabled="False" BorderBrush="#FFEF792E"/>
         <GroupBox Header="Versions" HorizontalAlignment="Left" Margin="10,271,0,0" VerticalAlignment="Top" Height="104" Width="333">
             <Grid>
                 <Label Content="Release:&#xA;Experimental:&#xD;&#xA;Installed:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
                 <Label x:Name="LatestVersionsLabel" Content="Searching...&#xD;&#xA;Searching...&#xD;&#xA;Searching..." Margin="96,11,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="215"/>
             </Grid>
         </GroupBox>
-        <Button x:Name="DeleteOldVersions" Content="Delete unused Blender versions" HorizontalAlignment="Left" Margin="10,0,0,50" VerticalAlignment="Bottom" Width="234" Background="White" BorderThickness="2,0,0,0" Padding="5,1,1,1" HorizontalContentAlignment="Left"/>
-        <Button x:Name="CreateBlenderShortcut" Content="Create 'Launch Blender' shortcut" HorizontalAlignment="Left" Margin="10,0,0,70" VerticalAlignment="Bottom" Width="234" Background="White" BorderThickness="2,0,0,0" Padding="5,1,1,1" HorizontalContentAlignment="Left"/>
-        <Button x:Name="CreateBlenderShortcut_Copy" Content="Create 'bLauncher Settings' shortcut" HorizontalAlignment="Left" Margin="10,0,0,90" VerticalAlignment="Bottom" Width="234" Background="White" BorderThickness="2,0,0,0" HorizontalContentAlignment="Left" Padding="5,1,1,1"/>
+        <Button x:Name="DeleteOldVersions" Content="Delete unused Blender versions" HorizontalAlignment="Left" Margin="10,0,0,50" VerticalAlignment="Bottom" Width="234" Background="White" BorderThickness="2,0,0,0" Padding="5,1,1,1" HorizontalContentAlignment="Left" BorderBrush="#FFEF792E"/>
+        <Button x:Name="CreateBlenderShortcut" Content="Create 'Launch Blender' shortcut" HorizontalAlignment="Left" Margin="10,0,0,70" VerticalAlignment="Bottom" Width="234" Background="White" BorderThickness="2,0,0,0" Padding="5,1,1,1" HorizontalContentAlignment="Left" BorderBrush="#FFEF792E"/>
+        <Button x:Name="CreateBlenderShortcut_Copy" Content="Create 'bLauncher Settings' shortcut" HorizontalAlignment="Left" Margin="10,0,0,90" VerticalAlignment="Bottom" Width="234" Background="White" BorderThickness="2,0,0,0" HorizontalContentAlignment="Left" Padding="5,1,1,1" BorderBrush="#FFEF792E"/>
         <Grid x:Name="ChromeGrid" HorizontalAlignment="Left" Height="28" Margin="2,2,0,0" VerticalAlignment="Top" Width="314" Background="White">
             <Image x:Name="ChromeBar" HorizontalAlignment="Left" Height="28" VerticalAlignment="Top" Width="31" Source="blender-logo.ico"/>
-            <Button x:Name="LaunchBlenderButton" Content="Launch Blender" HorizontalAlignment="Right" Margin="0,-2,8,0" VerticalAlignment="Top" Width="101" Height="30" BorderBrush="#FF004591" BorderThickness="2,0,2,2" Background="{x:Null}"/>
+            <Button x:Name="LaunchBlenderButton" Content="Launch Blender" HorizontalAlignment="Right" Margin="0,-2,8,0" VerticalAlignment="Top" Width="101" Height="30" BorderBrush="#FFEF792E" BorderThickness="0,0,0,2" Background="{x:Null}"/>
         </Grid>
         <Label x:Name="CancelLabel" Content="r" HorizontalAlignment="Right" VerticalAlignment="Top" Foreground="#FF004591" Cursor="Hand" FontFamily="Marlett" FontSize="18" Width="46" HorizontalContentAlignment="Center" RenderTransformOrigin="0.501,0.5"/>
         <RichTextBox HorizontalAlignment="Left" Height="230" Margin="398,56,0,0" VerticalAlignment="Top" Width="416" FontSize="10">
             <FlowDocument>
                 <Paragraph FontWeight="Bold" FontSize="14.6666666666667" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
                     <Span Language="de-de">
-                        <Run Text="bLaucher – http://setagon.com/projects/blauncher"/>
+                        <Run Text="bLaucher"/>
                     </Span>
                 </Paragraph>
                 <Paragraph FontWeight="Bold" FontSize="13.3333333333333" FontFamily="Calibri" Margin="0,0,0,10.67" TextAlignment="Left">
@@ -1847,14 +1847,12 @@
             </FlowDocument>
         </RichTextBox>
         <Label x:Name="AppVersionLabel" Content="v0.0.0.0" HorizontalAlignment="Right" Margin="0,0,10,10" VerticalAlignment="Bottom" FontSize="10" Height="16" Padding="0" Foreground="#FF7A7A7A"/>
-        <Label Content="made for" HorizontalAlignment="Left" Margin="698,331,0,0" VerticalAlignment="Top" FontSize="14" Height="16" Padding="0"/>
-        <Label Content="view on" HorizontalAlignment="Left" Margin="409,327,0,0" VerticalAlignment="Top" FontSize="14" Height="22" Padding="0"/>
-        <Image x:Name="setagonImage" HorizontalAlignment="Left" Height="43" Margin="405,337,0,0" VerticalAlignment="Top" Width="172" Source="Resources/New_Tin_Black.png" Cursor="Hand"/>
-        <Image x:Name="blenderImage" HorizontalAlignment="Left" Height="60" Margin="648,335,0,0" VerticalAlignment="Top" Width="154" Source="Resources/blender-socket.png" Cursor="Hand"/>
+        <Label Content="made for" HorizontalAlignment="Left" Margin="448,323,0,0" VerticalAlignment="Top" FontSize="14" Height="16" Padding="0"/>
+        <Image x:Name="blenderImage" HorizontalAlignment="Left" Height="60" Margin="398,327,0,0" VerticalAlignment="Top" Width="154" Source="Resources/blender-socket.png" Cursor="Hand"/>
         <Label Content="scroll down to view other licenses" HorizontalAlignment="Left" Margin="398,286,0,0" VerticalAlignment="Top" FontSize="10" Height="16" Padding="0"/>
-        <Button x:Name="DonateButton" Content="Donate" HorizontalAlignment="Left" Margin="405,0,0,14" VerticalAlignment="Bottom" Width="205" Background="#FFAFB2FF" Height="25" FontWeight="Bold" FontSize="16" BorderThickness="2,0,0,0"/>
-        <Button x:Name="AboutButton" Content="About &gt;" HorizontalAlignment="Right" Margin="0,0,48,10" VerticalAlignment="Bottom" Width="59" Background="#FFACB0FF" FontWeight="Bold" BorderThickness="2,0,0,0" HorizontalContentAlignment="Left" Padding="5,1,1,1"/>
-        <Button x:Name="DeleteAllVersions" Content="Delete all Blender versions" HorizontalAlignment="Left" Margin="10,0,0,30" VerticalAlignment="Bottom" Width="234" Background="White" BorderThickness="2,0,0,0" Padding="5,1,1,1" HorizontalContentAlignment="Left"/>
+        <Button x:Name="DonateButton" Content="Donate" HorizontalAlignment="Left" Margin="398,0,0,10" VerticalAlignment="Bottom" Width="205" Background="White" Height="25" FontWeight="Bold" FontSize="16" BorderThickness="0,0,0,2" BorderBrush="#FFEF792E"/>
+        <Button x:Name="AboutButton" Content="About &gt;" HorizontalAlignment="Right" Margin="0,0,48,10" VerticalAlignment="Bottom" Width="59" Background="White" FontWeight="Bold" BorderThickness="0,0,0,2" HorizontalContentAlignment="Left" Padding="5,1,1,1" BorderBrush="#FFEF792E"/>
+        <Button x:Name="DeleteAllVersions" Content="Delete all Blender versions" HorizontalAlignment="Left" Margin="10,0,0,30" VerticalAlignment="Bottom" Width="234" Background="White" BorderThickness="2,0,0,0" Padding="5,1,1,1" HorizontalContentAlignment="Left" BorderBrush="#FFEF792E"/>
 
     </Grid>
 </Window>

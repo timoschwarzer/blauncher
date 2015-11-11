@@ -5,6 +5,7 @@ Imports blauncher.PublicVariables
 Imports Ionic.Zip
 Imports System.ComponentModel
 Imports System.Windows.Media.Animation
+Imports System.Windows.Media
 
 Class MainWindow
 
@@ -409,8 +410,9 @@ Class MainWindow
         Dim anim As New DoubleAnimation(1.5, New Duration(New TimeSpan(0, 0, 0, 0, 300)))
         Dim pe As New PowerEase With {.EasingMode = EasingMode.EaseOut, .Power = 7}
         anim.EasingFunction = pe
-        scaleTransform.BeginAnimation(Windows.Media.ScaleTransform.ScaleXProperty, anim)
-        scaleTransform.BeginAnimation(Windows.Media.ScaleTransform.ScaleYProperty, anim)
+
+        scaleTransform.BeginAnimation(System.Windows.Media.ScaleTransform.ScaleXProperty, anim)
+        scaleTransform.BeginAnimation(System.Windows.Media.ScaleTransform.ScaleYProperty, anim)
     End Sub
     Private Sub CancelLabel_MouseLeave(sender As Object, e As MouseEventArgs) Handles CancelLabel.MouseLeave
         Dim scaleTransform As New ScaleTransform(1.5, 1.5)
@@ -418,8 +420,8 @@ Class MainWindow
         Dim anim As New DoubleAnimation(1, New Duration(New TimeSpan(0, 0, 0, 0, 300)))
         Dim pe As New PowerEase With {.EasingMode = EasingMode.EaseOut, .Power = 7}
         anim.EasingFunction = pe
-        scaleTransform.BeginAnimation(Windows.Media.ScaleTransform.ScaleXProperty, anim)
-        scaleTransform.BeginAnimation(Windows.Media.ScaleTransform.ScaleYProperty, anim)
+        scaleTransform.BeginAnimation(System.Windows.Media.ScaleTransform.ScaleXProperty, anim)
+        scaleTransform.BeginAnimation(System.Windows.Media.ScaleTransform.ScaleYProperty, anim)
     End Sub
     Private Sub ShowCancelButton()
         CancelLabel.IsEnabled = True
